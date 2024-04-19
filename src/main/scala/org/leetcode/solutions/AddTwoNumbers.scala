@@ -12,7 +12,7 @@ package org.leetcode.solutions
 object AddTwoNumbers extends App {
 
   def addTwoNumbers(l1: ListNode, l2: ListNode): ListNode = {
-    // Define a recursive helper function to add two numbers represented as linked lists
+
     def addHelper(node1: ListNode, node2: ListNode, carry: Int): ListNode = {
       if (node1 == null && node2 == null && carry == 0) {
         null
@@ -21,7 +21,7 @@ object AddTwoNumbers extends App {
         val value2 = if (node2 != null) node2.x else 0
         val sum = value1 + value2 + carry
         val newNode = new ListNode(sum % 10)
-        // Recursive call to handle the next nodes and carry
+
         newNode.next = addHelper(if (node1 != null) node1.next else null, if (node2 != null) node2.next else null, sum / 10)
         newNode
       }
