@@ -1,0 +1,36 @@
+package org.leetcode.solutions.linkedlist
+
+object AddTwoNodes extends App {
+
+  def addTwoNums(l1: ListNode, l2: ListNode): ListNode = {
+
+    def addHelper(node1: ListNode, node2: ListNode, carry: Int): ListNode = {
+      if (node1 == null && node2 == null && carry == 0) {
+        null
+      } else {
+        val value1 = if (node1 != null) node1.x else 0
+        val value2 = if (node2 != null) node2.x else 0
+        val sum = value1 + value2 + carry
+        val newNode = new ListNode(sum % 10)
+
+        newNode.next = addHelper(if (node1 != null) node1.next else null, if (node2 != null) node2.next else null, sum / 10)
+        newNode
+      }
+    }
+
+    addHelper(l1, l2, 0)
+  }
+  val list1 = new ListNode(2, new ListNode(4, new ListNode(3)))
+  val list2 = new ListNode(5, new ListNode(6, new ListNode(4)))
+
+  val addList = addTwoNums(list1, list2)
+
+  var ptr = addList
+
+  while (ptr != null)
+  {
+    println(ptr.x)
+    ptr = ptr.next
+  }
+
+}
