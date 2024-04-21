@@ -8,7 +8,7 @@ object CoinChange extends App {
     dp(0) = 0
     for(i <- 1 to amount)
     {
-      for(j <- 0 until coins.size)
+      for(j <- 0 until coins.length)
       {
         if(coins(j) <= i)
         {
@@ -16,7 +16,7 @@ object CoinChange extends App {
         }
       }
     }
-    if(dp(amount) > amount ) -1 else dp(amount);
+    if(dp(amount) > amount ) -1 else dp(amount)
 
 
   }
