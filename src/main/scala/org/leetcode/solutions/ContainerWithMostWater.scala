@@ -23,7 +23,7 @@ object ContainerWithMostWater extends App {
       }
     }
 
-    return maxWater
+    maxWater
 
   }
 
